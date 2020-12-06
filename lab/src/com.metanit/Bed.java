@@ -22,5 +22,27 @@ public class Bed extends Item {
 	public Bed(String name) {
         super(name);
         this.name = name;
-    }	
+    }
+	
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bed bed = (Bed) o;
+        return sleeper.equals(bed.sleeper) &&
+                (free == bed.free) &&  (name == bed.name) &&
+                size.equals(bed.size) && color.equals(bed.color) &&
+		type.equals(bed.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, size, color, sleeper);
+    }
+
+    @Override
+    public String toString() {
+        return "Sleeper on this bed " + this.sleeper.getName();
+    }
 }
